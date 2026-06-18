@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для тебя</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* ФОН: Мягкий, пастельный серо-фиолетовый, не слепит глаза */
+            background-color: #f3eff5;
+            /* ЦВЕТ ТЕКСТА: Темный графитово-фиолетовый, комфортный для чтения */
+            color: #38343d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(130, 120, 140, 0.1);
+            max-width: 500px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        h1 {
+            /* ЗАГОЛОВКИ: Приглушенный черничный оттенок */
+            color: #58466d;
+            font-size: 1.45rem;
+            line-height: 1.5;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+        p {
+            font-size: 1.05rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
+        }
+        .btn {
+            /* ГЛАВНАЯ КНОПКА: Спокойный фиолетовый */
+            background-color: #7b6393;
+            color: white;
+            border: none;
+            padding: 13px 32px;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(123, 99, 147, 0.2);
+            margin: 6px;
+        }
+        .btn:hover {
+            /* КНОПКА ПРИ НАВЕДЕНИИ: Чуть насыщеннее */
+            background-color: #695280;
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            /* КНОПКА "НЕТ": Нейтральный серый */
+            background-color: #949199;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .btn-secondary:hover {
+            background-color: #817e85;
+        }
+        .step {
+            display: none;
+        }
+        .step.active {
+            display: block;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .text-left {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div id="step1" class="step active">
+            <h1>У меня есть для тебя кое-что важное.</h1>
+            <button class="btn" onclick="nextStep(2)">Нажми сюда</button>
+        </div>
+
+        <div id="step2" class="step">
+            <h1>Первое задание: пожалуйста, улыбнись.</h1>
+            <button class="btn" onclick="nextStep(3)">Я улыбнулась</button>
+        </div>
+
+        <div id="step3" class="step">
+            <h1>А теперь улыбнись еще шире.</h1>
+            <button class="btn" onclick="nextStep(4)">Вот так?</button>
+        </div>
+
+        <div id="step4" class="step">
+            <h1>Замечательно. Ты готова читать дальше?</h1>
+            <button class="btn" onclick="nextStep(5)">Да</button>
+            <button class="btn btn-secondary" onclick="nextStep(6)">Нет</button>
+        </div>
+
+        <div id="step5" class="step">
+            <h1 style="margin-bottom: 20px;">Прости меня, пожалуйста.</h1>
+            <div class="text-left">
+                <p>Я совершил глупость, когда проигнорировал тебя и оставил одну, зная, что у тебя не было настроения. Мне действительно нет оправдания. В такой момент я должен был быть рядом, поддержать тебя или просто выслушать, а не закрываться в себе.</p>
+                <p>Мне очень жаль, что я заставил тебя чувствовать себя одиноко. Я всё обдумал, сделал выводы и больше так не поступлю. Ты мне очень дорога.</p>
+            </div>
+        </div>
+
+        <div id="step6" class="step">
+            <h1>Ты уверена?</h1>
+            <button class="btn" onclick="nextStep(7)">Да</button>
+            <button class="btn btn-secondary" onclick="nextStep(4)">Нет</button>
+        </div>
+
+        <div id="step7" class="step">
+            <h1>Я всё равно должен это сказать.</h1>
+            <div class="text-left">
+                <p>Мне очень жаль, что я не оказался рядом, когда тебе это было нужно больше всего. Прости меня, пожалуйста.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Функция переключения шагов — её не трогаем
+        function nextStep(stepNumber) {
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => step.classList.remove('active'));
+            
+            const currentStep = document.getElementById('step' + stepNumber);
+            if (currentStep) {
+                currentStep.classList.add('active');
+            }
+        }
+    </script>
+
+</body>
+</html>
